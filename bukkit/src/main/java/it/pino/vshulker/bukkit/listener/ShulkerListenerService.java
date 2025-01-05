@@ -3,10 +3,7 @@ package it.pino.vshulker.bukkit.listener;
 import it.pino.vshulker.api.listener.ListenerService;
 import it.pino.vshulker.api.listener.Listener;
 import it.pino.vshulker.api.ShulkerAPI;
-import it.pino.vshulker.bukkit.listener.event.InvClickListener;
-import it.pino.vshulker.bukkit.listener.event.InvCloseListener;
-import it.pino.vshulker.bukkit.listener.event.PlayerDamageListener;
-import it.pino.vshulker.bukkit.listener.event.PlayerInteractListener;
+import it.pino.vshulker.bukkit.listener.checks.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -22,7 +19,9 @@ public final class ShulkerListenerService implements ListenerService {
                 new PlayerInteractListener(api.getSnapshotService(), api.getPlugin()),
                 new InvClickListener(),
                 new InvCloseListener(api.getSnapshotService()),
-                new PlayerDamageListener()
+                new PlayerDamageListener(),
+                new PlayerBlockListener(),
+                new InvOpenListener()
         );
     }
 

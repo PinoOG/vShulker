@@ -1,4 +1,4 @@
-package it.pino.vshulker.bukkit.listener.event;
+package it.pino.vshulker.bukkit.listener.checks;
 
 import it.pino.vshulker.api.listener.Listener;
 import it.pino.vshulker.api.snapshot.Snapshot;
@@ -14,7 +14,7 @@ public final class PlayerDamageListener implements Listener<EntityDamageEvent> {
 
     @Override
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onEvent(@NotNull EntityDamageEvent event) {
+    public void onEvent(@NotNull final EntityDamageEvent event) {
         if(event.isCancelled()) return;
 
         if(!(event.getEntity() instanceof Player player)) return;

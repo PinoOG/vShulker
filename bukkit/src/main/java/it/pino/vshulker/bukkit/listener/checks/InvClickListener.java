@@ -1,4 +1,4 @@
-package it.pino.vshulker.bukkit.listener.event;
+package it.pino.vshulker.bukkit.listener.checks;
 
 import it.pino.vshulker.api.listener.Listener;
 import it.pino.vshulker.api.snapshot.Snapshot;
@@ -12,7 +12,7 @@ public final class InvClickListener implements Listener<InventoryClickEvent> {
 
     @Override
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onEvent(@NotNull InventoryClickEvent event) {
+    public void onEvent(@NotNull final InventoryClickEvent event) {
         if(!(event.getInventory().getHolder(false) instanceof Snapshot)) return;
 
         if(event.getCurrentItem() == null) return;

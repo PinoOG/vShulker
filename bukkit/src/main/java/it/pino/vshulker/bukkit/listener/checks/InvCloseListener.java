@@ -1,4 +1,4 @@
-package it.pino.vshulker.bukkit.listener.event;
+package it.pino.vshulker.bukkit.listener.checks;
 
 import it.pino.vshulker.api.listener.Listener;
 import it.pino.vshulker.api.snapshot.Snapshot;

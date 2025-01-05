@@ -1,4 +1,4 @@
-package it.pino.vshulker.bukkit.listener.event;
+package it.pino.vshulker.bukkit.listener.checks;
 
 import it.pino.vshulker.api.listener.Listener;
 import it.pino.vshulker.api.snapshot.SnapshotService;
@@ -40,13 +40,9 @@ public final class PlayerInteractListener implements Listener<PlayerInteractEven
         if (!(blockStateMeta.getBlockState() instanceof ShulkerBox shulker)) return;
         event.setCancelled(true);
 
-        
+
         var key = this.snapshotService.getKey();
         var identifier = UUID.randomUUID();
-
-        var meta = item.getItemMeta();
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, identifier.toString());
-        item.setItemMeta(meta);
 
         var uniqueId = event.getPlayer().getUniqueId();
         this.snapshotService.addSnapshot(uniqueId, shulker, identifier);
@@ -55,6 +51,10 @@ public final class PlayerInteractListener implements Listener<PlayerInteractEven
 
         this.snapshotService.getSnapshot(uniqueId).ifPresent(snapshot -> {
             shulker.getInventory().clear();
+            blockStateMeta.setBlockState(shulker);
+            blockStateMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, identifier.toString());
+            item.setItemMeta(blockStateMeta);
+
             Bukkit.getScheduler().runTask(this.plugin, () -> event.getPlayer().openInventory(snapshot.getInventory()));
         });
 
