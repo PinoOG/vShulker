@@ -1,0 +1,6 @@
+name: vShulker
+version: '${version}'
+main: it.pino.vshulker.bukkit.ShulkerPlugin
+api-version: '1.21'
+authors: [PinoOG]
+description: Open your ShulkerBoxes without placing them
